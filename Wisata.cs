@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Fitur_Homepage_admin_penginapan
 {
     public partial class Wisata : Form
@@ -46,6 +48,7 @@ namespace Fitur_Homepage_admin_penginapan
         {
             Edit_detail_wisata form = new Edit_detail_wisata();
             form.Show();
+            form.LoadData("A01");
         }
     }
 }
