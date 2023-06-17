@@ -50,5 +50,26 @@ namespace Fitur_Homepage_admin_penginapan
             form.Show();
             form.LoadData("A01");
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Edit_detail_wisata form = new Edit_detail_wisata();
+            form.Show();
+            form.LoadData("A02");
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Edit_detail_wisata form = new Edit_detail_wisata();
+            form.Show();
+            form.LoadData("A03");
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Edit_detail_wisata form = new Edit_detail_wisata();
+            form.Show();
+            form.LoadData("A04");
+        }
     }
 }

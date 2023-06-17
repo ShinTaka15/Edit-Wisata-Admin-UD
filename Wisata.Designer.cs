@@ -217,6 +217,7 @@
             label5.Size = new Size(170, 29);
             label5.TabIndex = 4;
             label5.Text = "Kebon Agung";
+            label5.Click += label5_Click;
             // 
             // panel7
             // 
@@ -241,6 +242,7 @@
             label4.Size = new Size(116, 29);
             label4.TabIndex = 3;
             label4.Text = "Patemon";
+            label4.Click += label4_Click;
             // 
             // panel5
             // 
@@ -264,6 +266,7 @@
             label3.Size = new Size(118, 29);
             label3.TabIndex = 2;
             label3.Text = "Watu Ulo";
+            label3.Click += label3_Click;
             // 
             // panel4
             // 

@@ -30,7 +30,7 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Edit_detail_wisata_Load(object sender, EventArgs e)
         {
-            //LoadData();
+
         }
         public void LoadData(string Id)
         {
@@ -39,9 +39,14 @@ namespace Fitur_Homepage_admin_penginapan
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    NpgsqlCommand command = new NpgsqlCommand($"SELECT t1.nama_wisata, t1.deskripsi_wisata, t1.alamat_wisata, t3.nama_fasilitas, t4.harga_tiket\r\nFROM wisata AS t1\r\nJOIN detail_wisata AS t2 ON t1.id_wisata = t2.wisata_id_wisata\r\nJOIN fasilitas_wisata AS t3 ON t2.fasilitas_wisata_fasilitas_wisata_id = t3.fasilitas_wisata_id\r\nJOIN tiket AS t4 ON t1.id_wisata = t4.wisata_id_wisata\r\nWHERE t1.id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command = new NpgsqlCommand($"SELECT t1.nama_wisata, t1.deskripsi_wisata, t1.alamat_wisata, t3.nama_fasilitas, t4.harga_tiket" +
+                        $"FROM wisata AS t1 JOIN detail_wisata AS t2 ON t1.id_wisata = t2.wisata_id_wisata" +
+                        $"JOIN fasilitas_wisata AS t3 ON t2.fasilitas_wisata_fasilitas_wisata_id = t3.fasilitas_wisata_id" +
+                        $"JOIN tiket AS t4 ON t1.id_wisata = t4.wisata_id_wisata" +
+                        $"WHERE t1.id_wisata = '{Id}'", connection);
                     NpgsqlDataReader reader = command.ExecuteReader();
                     List<string> fasilitas = new List<string>();
+
 
                     while (reader.Read())
                     {
@@ -62,7 +67,9 @@ namespace Fitur_Homepage_admin_penginapan
                     Fasilitas.Text = kumpulanFasilitas;
                     reader.Close();
 
-                    NpgsqlCommand command1 = new NpgsqlCommand($"SELECT t1.nama_paketmakanan FROM paket_makanan AS t1\r\nJOIN wisata AS t2 ON t1.wisata_id_wisata = t2.id_wisata\r\nWHERE t2.id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command1 = new NpgsqlCommand($"SELECT t1.nama_paketmakanan FROM paket_makanan AS t1" +
+                        $"JOIN wisata AS t2 ON t1.wisata_id_wisata = t2.id_wisata" +
+                        $"WHERE t2.id_wisata = '{Id}'", connection);
                     NpgsqlDataReader reader1 = command1.ExecuteReader();
                     List<string> menupaket = new List<string>();
 
@@ -123,6 +130,11 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Simpan_Click(object sender, EventArgs e)
         {
+            UpdateData("");
+        }
+
+        private void UpdateData(string Id)
+        {
             try
             {
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
@@ -136,23 +148,23 @@ namespace Fitur_Homepage_admin_penginapan
                     string newFasilitas = Fasilitas.Text;
                     string newMenupaket = Menupaket.Text;
 
-                    NpgsqlCommand command = new NpgsqlCommand("UPDATE wisata SET nama_wisata = @Nama, deskripsi_wisata = @Deskripsi, alamat_wisata = @Alamat WHERE id_wisata = ''", connection);
+                    NpgsqlCommand command = new NpgsqlCommand($"UPDATE wisata SET nama_wisata = @Nama, deskripsi_wisata = @Deskripsi, alamat_wisata = @Alamat WHERE id_wisata = '{Id}'", connection);
                     command.Parameters.AddWithValue("@Nama", newJudul);
                     command.Parameters.AddWithValue("@Deskripsi", newDeskripsi);
                     command.Parameters.AddWithValue("@Alamat", newAlamat);
                     command.ExecuteNonQuery();
 
-                    NpgsqlCommand command1 = new NpgsqlCommand("UPDATE tiket SET harga_tiket = @Harga WHERE wisata_id_wisata = ''", connection);
-                    command.Parameters.AddWithValue("@Harga", newHarga);
-                    command.ExecuteNonQuery();
+                    NpgsqlCommand command1 = new NpgsqlCommand($"UPDATE tiket SET harga_tiket = @Harga WHERE wisata_id_wisata = '{Id}'", connection);
+                    command1.Parameters.AddWithValue("@Harga", newHarga);
+                    command1.ExecuteNonQuery();
 
-                    NpgsqlCommand command2 = new NpgsqlCommand("UPDATE fasilitas_wisata SET nama_fasilitas = @Fasilitas ", connection);
-                    command.Parameters.AddWithValue("@Fasilitas", newFasilitas);
-                    command.ExecuteNonQuery();
+                    //NpgsqlCommand command2 = new NpgsqlCommand($"UPDATE fasilitas_wisata SET nama_fasilitas = @Fasilitas WHERE id_wisata = '{Id}'", connection);
+                    //command.Parameters.AddWithValue("@Fasilitas", newFasilitas);
+                    //command.ExecuteNonQuery();
 
-                    NpgsqlCommand command3 = new NpgsqlCommand("UPDATE paket_makanan SET nama_paketmakanan = @Menupaket ", connection);
-                    command.Parameters.AddWithValue("@Menupaket", newMenupaket);
-                    command.ExecuteNonQuery();
+                    //NpgsqlCommand command3 = new NpgsqlCommand($"UPDATE paket_makanan SET nama_paketmakanan = @Menupaket ", connection);
+                    //command.Parameters.AddWithValue("@Menupaket", newMenupaket);
+                    //command.ExecuteNonQuery();
 
                     MessageBox.Show("Data baru tersimpan");
                     connection.Close();
@@ -160,6 +172,7 @@ namespace Fitur_Homepage_admin_penginapan
 
                 LoadData("");
             }
+
             catch (Exception ex)
 
             {
