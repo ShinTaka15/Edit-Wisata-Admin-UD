@@ -44,8 +44,8 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Edit_detail_wisata detail1 = new Edit_detail_wisata();
-            detail1.Show();
+            Edit_detail_wisata form = new Edit_detail_wisata();
+            form.Show();
         }
     }
 }

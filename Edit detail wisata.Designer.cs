@@ -188,7 +188,7 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Location = new Point(24, 58);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(732, 107);
+            pictureBox1.Size = new Size(728, 107);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -211,7 +211,7 @@
             Hargatiket.Location = new Point(402, 198);
             Hargatiket.Multiline = true;
             Hargatiket.Name = "Hargatiket";
-            Hargatiket.Size = new Size(354, 47);
+            Hargatiket.Size = new Size(350, 47);
             Hargatiket.TabIndex = 3;
             Hargatiket.TextChanged += Kapasitas_TextChanged;
             // 
@@ -234,7 +234,7 @@
             Judul.Location = new Point(24, 198);
             Judul.Multiline = true;
             Judul.Name = "Judul";
-            Judul.Size = new Size(354, 47);
+            Judul.Size = new Size(350, 47);
             Judul.TabIndex = 2;
             // 
             // Judul1
@@ -245,9 +245,9 @@
             Judul1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             Judul1.Location = new Point(24, 173);
             Judul1.Name = "Judul1";
-            Judul1.Size = new Size(52, 20);
+            Judul1.Size = new Size(115, 20);
             Judul1.TabIndex = 14;
-            Judul1.Text = "Judul";
+            Judul1.Text = "Nama Wisata";
             // 
             // Keterangan
             // 
@@ -276,7 +276,7 @@
             Fasilitas.Location = new Point(402, 297);
             Fasilitas.Multiline = true;
             Fasilitas.Name = "Fasilitas";
-            Fasilitas.Size = new Size(354, 199);
+            Fasilitas.Size = new Size(350, 199);
             Fasilitas.TabIndex = 5;
             // 
             // Fasilitas1
@@ -297,7 +297,7 @@
             Menupaket.Location = new Point(402, 548);
             Menupaket.Multiline = true;
             Menupaket.Name = "Menupaket";
-            Menupaket.Size = new Size(354, 149);
+            Menupaket.Size = new Size(350, 149);
             Menupaket.TabIndex = 6;
             Menupaket.TextChanged += Fasilitas_TextChanged;
             // 
@@ -319,7 +319,7 @@
             Lokasi.Location = new Point(402, 747);
             Lokasi.Multiline = true;
             Lokasi.Name = "Lokasi";
-            Lokasi.Size = new Size(354, 67);
+            Lokasi.Size = new Size(350, 67);
             Lokasi.TabIndex = 7;
             // 
             // Lokasi1
@@ -343,7 +343,7 @@
             Simpan.FlatStyle = FlatStyle.Flat;
             Simpan.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             Simpan.ForeColor = Color.White;
-            Simpan.Location = new Point(636, 859);
+            Simpan.Location = new Point(632, 859);
             Simpan.Margin = new Padding(0);
             Simpan.Name = "Simpan";
             Simpan.Size = new Size(120, 44);
@@ -361,13 +361,14 @@
             Hapus.FlatStyle = FlatStyle.Flat;
             Hapus.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             Hapus.ForeColor = Color.White;
-            Hapus.Location = new Point(485, 859);
+            Hapus.Location = new Point(481, 859);
             Hapus.Margin = new Padding(0);
             Hapus.Name = "Hapus";
             Hapus.Size = new Size(120, 44);
             Hapus.TabIndex = 8;
             Hapus.Text = "Hapus";
             Hapus.UseVisualStyleBackColor = true;
+            Hapus.Click += Hapus_Click;
             // 
             // panel3
             // 
