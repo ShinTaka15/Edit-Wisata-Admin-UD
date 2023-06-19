@@ -4,6 +4,8 @@ namespace Fitur_Homepage_admin_penginapan
 {
     public partial class Wisata : Form
     {
+        Edit_detail_wisata form = new Edit_detail_wisata();
+
         public Wisata()
         {
             InitializeComponent();
@@ -46,30 +48,30 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Edit_detail_wisata form = new Edit_detail_wisata();
             form.Show();
             form.LoadData("A01");
+            //form.ShowPicture("A01");
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Edit_detail_wisata form = new Edit_detail_wisata();
             form.Show();
             form.LoadData("A02");
+            //form.ShowPicture("A02");
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Edit_detail_wisata form = new Edit_detail_wisata();
             form.Show();
             form.LoadData("A03");
+            //form.ShowPicture("A03");
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            Edit_detail_wisata form = new Edit_detail_wisata();
             form.Show();
             form.LoadData("A04");
+            //form.ShowPicture("A04");
         }
     }
 }

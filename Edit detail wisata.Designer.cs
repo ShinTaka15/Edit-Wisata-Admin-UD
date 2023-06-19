@@ -71,8 +71,9 @@
             panel1.Controls.Add(pictureBox3);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(169, 548);
+            panel1.Size = new Size(193, 731);
             panel1.TabIndex = 0;
             // 
             // button10
@@ -84,9 +85,10 @@
             button10.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button10.FlatStyle = FlatStyle.Flat;
             button10.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button10.Location = new Point(52, 190);
+            button10.Location = new Point(59, 253);
+            button10.Margin = new Padding(3, 4, 3, 4);
             button10.Name = "button10";
-            button10.Size = new Size(60, 23);
+            button10.Size = new Size(69, 31);
             button10.TabIndex = 33;
             button10.Text = "Update";
             button10.UseVisualStyleBackColor = true;
@@ -101,9 +103,10 @@
             button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button9.Location = new Point(64, 158);
+            button9.Location = new Point(73, 211);
+            button9.Margin = new Padding(3, 4, 3, 4);
             button9.Name = "button9";
-            button9.Size = new Size(43, 23);
+            button9.Size = new Size(49, 31);
             button9.TabIndex = 32;
             button9.Text = "Faq";
             button9.UseVisualStyleBackColor = true;
@@ -118,9 +121,10 @@
             button8.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button8.Location = new Point(32, 125);
+            button8.Location = new Point(37, 167);
+            button8.Margin = new Padding(3, 4, 3, 4);
             button8.Name = "button8";
-            button8.Size = new Size(98, 23);
+            button8.Size = new Size(112, 31);
             button8.TabIndex = 31;
             button8.Text = "Booking Hotel";
             button8.UseVisualStyleBackColor = true;
@@ -135,10 +139,10 @@
             button7.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button7.Location = new Point(46, 93);
+            button7.Location = new Point(53, 124);
             button7.Margin = new Padding(0);
             button7.Name = "button7";
-            button7.Size = new Size(71, 23);
+            button7.Size = new Size(81, 31);
             button7.TabIndex = 30;
             button7.Text = "Destinasi";
             button7.UseVisualStyleBackColor = true;
@@ -147,9 +151,10 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(62, 26);
+            pictureBox3.Location = new Point(71, 35);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(43, 28);
+            pictureBox3.Size = new Size(49, 37);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 1;
             pictureBox3.TabStop = false;
@@ -176,9 +181,10 @@
             panel2.Controls.Add(Lokasi1);
             panel2.Controls.Add(Simpan);
             panel2.Controls.Add(Hapus);
-            panel2.Location = new Point(173, 58);
+            panel2.Location = new Point(198, 77);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(789, 447);
+            panel2.Size = new Size(902, 596);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
@@ -186,12 +192,14 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Location = new Point(24, 58);
+            pictureBox1.Location = new Point(27, 77);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(728, 107);
+            pictureBox1.Size = new Size(812, 143);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Foto1
             // 
@@ -199,7 +207,7 @@
             Foto1.BackColor = Color.Transparent;
             Foto1.FlatStyle = FlatStyle.Flat;
             Foto1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Foto1.Location = new Point(24, 27);
+            Foto1.Location = new Point(27, 36);
             Foto1.Name = "Foto1";
             Foto1.Size = new Size(46, 20);
             Foto1.TabIndex = 16;
@@ -208,10 +216,11 @@
             // Hargatiket
             // 
             Hargatiket.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Hargatiket.Location = new Point(402, 198);
+            Hargatiket.Location = new Point(459, 264);
+            Hargatiket.Margin = new Padding(3, 4, 3, 4);
             Hargatiket.Multiline = true;
             Hargatiket.Name = "Hargatiket";
-            Hargatiket.Size = new Size(350, 47);
+            Hargatiket.Size = new Size(380, 61);
             Hargatiket.TabIndex = 3;
             Hargatiket.TextChanged += Kapasitas_TextChanged;
             // 
@@ -222,7 +231,7 @@
             Hargatiket1.BackColor = Color.Transparent;
             Hargatiket1.FlatStyle = FlatStyle.Flat;
             Hargatiket1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Hargatiket1.Location = new Point(402, 173);
+            Hargatiket1.Location = new Point(459, 231);
             Hargatiket1.Name = "Hargatiket1";
             Hargatiket1.Size = new Size(102, 20);
             Hargatiket1.TabIndex = 15;
@@ -231,10 +240,11 @@
             // Judul
             // 
             Judul.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Judul.Location = new Point(24, 198);
+            Judul.Location = new Point(27, 264);
+            Judul.Margin = new Padding(3, 4, 3, 4);
             Judul.Multiline = true;
             Judul.Name = "Judul";
-            Judul.Size = new Size(350, 47);
+            Judul.Size = new Size(491, 61);
             Judul.TabIndex = 2;
             // 
             // Judul1
@@ -243,7 +253,7 @@
             Judul1.BackColor = Color.Transparent;
             Judul1.FlatStyle = FlatStyle.Flat;
             Judul1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Judul1.Location = new Point(24, 173);
+            Judul1.Location = new Point(27, 231);
             Judul1.Name = "Judul1";
             Judul1.Size = new Size(115, 20);
             Judul1.TabIndex = 14;
@@ -252,10 +262,11 @@
             // Keterangan
             // 
             Keterangan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            Keterangan.Location = new Point(24, 297);
+            Keterangan.Location = new Point(27, 396);
+            Keterangan.Margin = new Padding(3, 4, 3, 4);
             Keterangan.Multiline = true;
             Keterangan.Name = "Keterangan";
-            Keterangan.Size = new Size(364, 517);
+            Keterangan.Size = new Size(415, 688);
             Keterangan.TabIndex = 4;
             // 
             // Keterangan1
@@ -264,7 +275,7 @@
             Keterangan1.BackColor = Color.Transparent;
             Keterangan1.FlatStyle = FlatStyle.Flat;
             Keterangan1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Keterangan1.Location = new Point(24, 273);
+            Keterangan1.Location = new Point(27, 364);
             Keterangan1.Name = "Keterangan1";
             Keterangan1.Size = new Size(102, 20);
             Keterangan1.TabIndex = 13;
@@ -273,10 +284,11 @@
             // Fasilitas
             // 
             Fasilitas.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Fasilitas.Location = new Point(402, 297);
+            Fasilitas.Location = new Point(459, 396);
+            Fasilitas.Margin = new Padding(3, 4, 3, 4);
             Fasilitas.Multiline = true;
             Fasilitas.Name = "Fasilitas";
-            Fasilitas.Size = new Size(350, 199);
+            Fasilitas.Size = new Size(380, 264);
             Fasilitas.TabIndex = 5;
             // 
             // Fasilitas1
@@ -285,7 +297,7 @@
             Fasilitas1.BackColor = Color.Transparent;
             Fasilitas1.FlatStyle = FlatStyle.Flat;
             Fasilitas1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Fasilitas1.Location = new Point(402, 273);
+            Fasilitas1.Location = new Point(459, 364);
             Fasilitas1.Name = "Fasilitas1";
             Fasilitas1.Size = new Size(76, 20);
             Fasilitas1.TabIndex = 12;
@@ -294,10 +306,11 @@
             // Menupaket
             // 
             Menupaket.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Menupaket.Location = new Point(402, 548);
+            Menupaket.Location = new Point(459, 731);
+            Menupaket.Margin = new Padding(3, 4, 3, 4);
             Menupaket.Multiline = true;
             Menupaket.Name = "Menupaket";
-            Menupaket.Size = new Size(350, 149);
+            Menupaket.Size = new Size(380, 197);
             Menupaket.TabIndex = 6;
             Menupaket.TextChanged += Fasilitas_TextChanged;
             // 
@@ -307,7 +320,7 @@
             Menupaket1.BackColor = Color.Transparent;
             Menupaket1.FlatStyle = FlatStyle.Flat;
             Menupaket1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Menupaket1.Location = new Point(402, 517);
+            Menupaket1.Location = new Point(459, 689);
             Menupaket1.Name = "Menupaket1";
             Menupaket1.Size = new Size(104, 20);
             Menupaket1.TabIndex = 11;
@@ -316,10 +329,11 @@
             // Lokasi
             // 
             Lokasi.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Lokasi.Location = new Point(402, 747);
+            Lokasi.Location = new Point(459, 996);
+            Lokasi.Margin = new Padding(3, 4, 3, 4);
             Lokasi.Multiline = true;
             Lokasi.Name = "Lokasi";
-            Lokasi.Size = new Size(350, 67);
+            Lokasi.Size = new Size(380, 88);
             Lokasi.TabIndex = 7;
             // 
             // Lokasi1
@@ -328,7 +342,7 @@
             Lokasi1.BackColor = Color.Transparent;
             Lokasi1.FlatStyle = FlatStyle.Flat;
             Lokasi1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
-            Lokasi1.Location = new Point(402, 722);
+            Lokasi1.Location = new Point(459, 963);
             Lokasi1.Name = "Lokasi1";
             Lokasi1.Size = new Size(61, 20);
             Lokasi1.TabIndex = 10;
@@ -343,10 +357,10 @@
             Simpan.FlatStyle = FlatStyle.Flat;
             Simpan.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             Simpan.ForeColor = Color.White;
-            Simpan.Location = new Point(632, 859);
+            Simpan.Location = new Point(702, 1145);
             Simpan.Margin = new Padding(0);
             Simpan.Name = "Simpan";
-            Simpan.Size = new Size(120, 44);
+            Simpan.Size = new Size(137, 59);
             Simpan.TabIndex = 9;
             Simpan.Text = "Simpan";
             Simpan.UseVisualStyleBackColor = true;
@@ -361,10 +375,10 @@
             Hapus.FlatStyle = FlatStyle.Flat;
             Hapus.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             Hapus.ForeColor = Color.White;
-            Hapus.Location = new Point(481, 859);
+            Hapus.Location = new Point(565, 1145);
             Hapus.Margin = new Padding(0);
             Hapus.Name = "Hapus";
-            Hapus.Size = new Size(120, 44);
+            Hapus.Size = new Size(137, 59);
             Hapus.TabIndex = 8;
             Hapus.Text = "Hapus";
             Hapus.UseVisualStyleBackColor = true;
@@ -374,9 +388,10 @@
             // 
             panel3.BackColor = Color.FromArgb(55, 163, 165);
             panel3.Controls.Add(EditPenginapan1);
-            panel3.Location = new Point(173, 0);
+            panel3.Location = new Point(198, 0);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(787, 58);
+            panel3.Size = new Size(899, 77);
             panel3.TabIndex = 0;
             // 
             // EditPenginapan1
@@ -387,7 +402,7 @@
             EditPenginapan1.FlatStyle = FlatStyle.Flat;
             EditPenginapan1.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Pixel);
             EditPenginapan1.ForeColor = Color.White;
-            EditPenginapan1.Location = new Point(324, 9);
+            EditPenginapan1.Location = new Point(370, 12);
             EditPenginapan1.Name = "EditPenginapan1";
             EditPenginapan1.Size = new Size(162, 26);
             EditPenginapan1.TabIndex = 17;
@@ -395,12 +410,13 @@
             // 
             // Edit_detail_wisata
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(962, 548);
+            ClientSize = new Size(1099, 731);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel3);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Edit_detail_wisata";
             Text = "Edit_detail_wisata";
             Load += Edit_detail_wisata_Load;

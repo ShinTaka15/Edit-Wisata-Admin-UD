@@ -16,6 +16,7 @@ namespace Fitur_Homepage_admin_penginapan
     {
         private string connectionString = "host=localhost;port=5432;database=Wisata Admin;user id=postgres;password=shofiyah774";
         private string Id;
+        //private string imagelocation;
 
         public Edit_detail_wisata(string Id)
         {
@@ -39,11 +40,8 @@ namespace Fitur_Homepage_admin_penginapan
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    NpgsqlCommand command = new NpgsqlCommand($"SELECT t1.nama_wisata, t1.deskripsi_wisata, t1.alamat_wisata, t3.nama_fasilitas, t4.harga_tiket" +
-                        $"FROM wisata AS t1 JOIN detail_wisata AS t2 ON t1.id_wisata = t2.wisata_id_wisata" +
-                        $"JOIN fasilitas_wisata AS t3 ON t2.fasilitas_wisata_fasilitas_wisata_id = t3.fasilitas_wisata_id" +
-                        $"JOIN tiket AS t4 ON t1.id_wisata = t4.wisata_id_wisata" +
-                        $"WHERE t1.id_wisata = '{Id}'", connection);
+
+                    NpgsqlCommand command = new NpgsqlCommand($"SELECT t1.nama_wisata, t1.deskripsi_wisata, t1.alamat_wisata, t3.nama_fasilitas, t4.harga_tiket \r\nFROM wisata AS t1 JOIN detail_wisata AS t2 ON t1.id_wisata = t2.wisata_id_wisata\r\nJOIN fasilitas_wisata AS t3 ON t2.fasilitas_wisata_fasilitas_wisata_id = t3.fasilitas_wisata_id\r\nJOIN tiket AS t4 ON t1.id_wisata = t4.wisata_id_wisata\r\nWHERE t1.id_wisata = '{Id}'", connection);
                     NpgsqlDataReader reader = command.ExecuteReader();
                     List<string> fasilitas = new List<string>();
 
@@ -62,18 +60,19 @@ namespace Fitur_Homepage_admin_penginapan
                     foreach (var item in fasilitas)
                     {
                         kumpulanFasilitas += item.ToString();
-                        kumpulanFasilitas += ", ";
+                        if (item != fasilitas.Last())
+                        {
+                            kumpulanFasilitas += ", ";
+                        }
                     }
                     Fasilitas.Text = kumpulanFasilitas;
                     reader.Close();
 
-                    NpgsqlCommand command1 = new NpgsqlCommand($"SELECT t1.nama_paketmakanan FROM paket_makanan AS t1" +
-                        $"JOIN wisata AS t2 ON t1.wisata_id_wisata = t2.id_wisata" +
-                        $"WHERE t2.id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command1 = new NpgsqlCommand($"SELECT t1.nama_paketmakanan FROM paket_makanan AS t1\r\nJOIN wisata AS t2 ON t1.wisata_id_wisata = t2.id_wisata\r\nWHERE t2.id_wisata = '{Id}'", connection);
                     NpgsqlDataReader reader1 = command1.ExecuteReader();
                     List<string> menupaket = new List<string>();
 
-                    while (reader1.Read()) 
+                    while (reader1.Read())
                     {
                         string dataMenupaket = reader1["nama_paketmakanan"].ToString();
                         menupaket.Add(dataMenupaket);
@@ -83,7 +82,10 @@ namespace Fitur_Homepage_admin_penginapan
                     foreach (var item in menupaket)
                     {
                         kumpulanMenupaket += item.ToString();
-                        kumpulanMenupaket += ", ";
+                        if (item != menupaket.Last())
+                        {
+                            kumpulanMenupaket += ", ";
+                        }
                     }
                     Menupaket.Text = kumpulanMenupaket;
                     reader1.Close();
@@ -130,47 +132,82 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Simpan_Click(object sender, EventArgs e)
         {
-            UpdateData("");
+            UpdateData($"{Id}");
         }
 
         private void UpdateData(string Id)
         {
             try
             {
+                //byte[] images = null;
+
+
+                //FileStream stream = new FileStream(imagelocation, FileMode.Open, FileAccess.Read);
+                //BinaryReader brs = new BinaryReader(stream);
+                //images = brs.ReadBytes((int)stream.Length);
+
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    string newJudul = Judul.Text;
-                    string newDeskripsi = Keterangan.Text;
-                    string newAlamat = Lokasi.Text;
-                    int newHarga = int.Parse(Hargatiket.Text);
                     string newFasilitas = Fasilitas.Text;
                     string newMenupaket = Menupaket.Text;
 
+                    // UPDATE database ke Tabel Wisata
                     NpgsqlCommand command = new NpgsqlCommand($"UPDATE wisata SET nama_wisata = @Nama, deskripsi_wisata = @Deskripsi, alamat_wisata = @Alamat WHERE id_wisata = '{Id}'", connection);
-                    command.Parameters.AddWithValue("@Nama", newJudul);
-                    command.Parameters.AddWithValue("@Deskripsi", newDeskripsi);
-                    command.Parameters.AddWithValue("@Alamat", newAlamat);
+                    command.Parameters.AddWithValue("@Nama", Judul.Text);
+                    command.Parameters.AddWithValue("@Deskripsi", Keterangan.Text);
+                    command.Parameters.AddWithValue("@Alamat", Lokasi.Text);
                     command.ExecuteNonQuery();
 
+                    // UPDATE database ke Tabel Tiket
                     NpgsqlCommand command1 = new NpgsqlCommand($"UPDATE tiket SET harga_tiket = @Harga WHERE wisata_id_wisata = '{Id}'", connection);
-                    command1.Parameters.AddWithValue("@Harga", newHarga);
+                    string newHarga = Hargatiket.Text;
+                    if (Int64.TryParse(newHarga, out long newHargaBigInt))
+                    {
+                        command1.Parameters.AddWithValue("@Harga", newHargaBigInt);
+                    }
+                    else
+                    {
+                        command1.Parameters.AddWithValue("@Harga", DBNull.Value);
+                    }
                     command1.ExecuteNonQuery();
 
-                    //NpgsqlCommand command2 = new NpgsqlCommand($"UPDATE fasilitas_wisata SET nama_fasilitas = @Fasilitas WHERE id_wisata = '{Id}'", connection);
-                    //command.Parameters.AddWithValue("@Fasilitas", newFasilitas);
-                    //command.ExecuteNonQuery();
+                    // UPDATE database ke Tabel Detail Wisata
+                    //List<string> fasilitas = new List<string>();
+                    //fasilitas.Add(Fasilitas.Text);
+                    //List<int> id_fasilitas = new List<int>();
 
-                    //NpgsqlCommand command3 = new NpgsqlCommand($"UPDATE paket_makanan SET nama_paketmakanan = @Menupaket ", connection);
-                    //command.Parameters.AddWithValue("@Menupaket", newMenupaket);
-                    //command.ExecuteNonQuery();
+                    //foreach (var nama_fasilitas in fasilitas)
+                    //{
+                    //    NpgsqlCommand command2 = new NpgsqlCommand($"SELECT fasilitas_wisata.fasilitas_wisata_id FROM fasilitas_wisata WHERE fasilitas_wisata.nama_fasilitas ILIKE '@NamaFasilitas'", connection);
+                    //    command2.Parameters.AddWithValue("@NamaFasilitas", nama_fasilitas);
+                    //    NpgsqlDataReader reader = command2.ExecuteReader();
+                    //    while (reader.Read())
+                    //    {
+                    //        int id = reader.GetInt32("id");
+                    //        id_fasilitas.Add(id);
+                    //    }
+                    //}
+
+                    //NpgsqlCommand command3 = new NpgsqlCommand($"DELETE FROM detail_wisata WHERE id_wisata = '{Id}'", connection);
+                    //command3.ExecuteNonQuery();
+
+                    //foreach (var newId in id_fasilitas)
+                    //{
+                    //    NpgsqlCommand command4 = new NpgsqlCommand($"INSERT INTO detail_wisata (wisata_id_wisata, fasilitas_wisata_fasilitas_wisata_id) VALUES('{Id}', @id_fasilitas)", connection);
+                    //    command4.Parameters.AddWithValue("@id_fasilitas", newId);
+                    //    command4.ExecuteNonQuery();
+                    //}
+
+                    // UPDATE database ke tabel Paket Makanan
+
 
                     MessageBox.Show("Data baru tersimpan");
                     connection.Close();
                 }
 
-                LoadData("");
+                LoadData($"A01");
             }
 
             catch (Exception ex)
@@ -182,15 +219,15 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Hapus_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Apa anda yakin ingin menghapus?", "Konfirmasi", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Apa anda yakin ingin menghapus?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 MessageBox.Show("Data berhasil dihapus", "Konfirmasi");
-                DeleteData();
+                DeleteData($"{Id}");
             }
         }
 
-        private void DeleteData()
+        private void DeleteData(string Id)
         {
             try
             {
@@ -198,21 +235,70 @@ namespace Fitur_Homepage_admin_penginapan
                 {
                     connection.Open();
 
-                    NpgsqlCommand command1 = new NpgsqlCommand("DELETE FROM wisata WHERE id_wisata = 'A01'", connection);
-                    NpgsqlCommand command2 = new NpgsqlCommand("DELETE FROM detail_wisata WHERE id_wisata = 'A01'", connection);
+                    NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command1 = new NpgsqlCommand($"DELETE FROM detail_wisata WHERE wisata_id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command2 = new NpgsqlCommand($"DELETE FROM tiket WHERE id_wisata = '{Id}'", connection);
+                    NpgsqlCommand command3 = new NpgsqlCommand($"DELETE FROM paket_makanan WHERE id_wisata = '{Id}'", connection);
 
+                    command.ExecuteNonQuery();
                     command1.ExecuteNonQuery();
                     command2.ExecuteNonQuery();
+                    command3.ExecuteNonQuery();
 
                     connection.Close();
                     Edit_detail_wisata form = new Edit_detail_wisata();
                     form.Close();
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        //public void ShowPicture(string Id)
+        //{
+        //    try
+        //    {
+        //        using (NpgsqlConnection connection = new NpgsqlConnection (connectionString))
+        //        {
+        //            connection.Open();
+        //            NpgsqlCommand command = new NpgsqlCommand($"SELECT image FROM wisata WHERE id_wisata = {Id}", connection);
+        //            DataTable dt = new DataTable();
+        //            dt.Load(command.ExecuteReader());
+        //            connection.Close();
+
+        //            if (dt.Rows.Count > 0 && dt.Rows[0]["image"] != DBNull.Value)
+        //            {
+        //                byte[] imageData = (byte[])dt.Rows[0]["image"];
+        //                using (MemoryStream ms = new MemoryStream(imageData))
+        //                {
+        //                    pictureBox1.Image = System.Drawing.Image.FromStream(ms);
+        //                }
+        //            }
+        //            else
+        //            {
+        //                pictureBox1.Image = null;
+        //                LoadData($"{Id}");
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
+            //if (dialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    imagelocation = dialog.FileName.ToString();
+            //    pictureBox1.ImageLocation = imagelocation;
+            //}
         }
     }
 }
