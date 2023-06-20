@@ -18,11 +18,6 @@ namespace Fitur_Homepage_admin_penginapan
         private string Id;
         //private string imagelocation;
 
-        public Edit_detail_wisata(string Id)
-        {
-            this.Id = Id;
-        }
-
 
         public Edit_detail_wisata()
         {
