@@ -9,8 +9,9 @@ namespace Fitur_Homepage_admin_penginapan.Models
 {
     public class WisataContext
     {
-        private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=12345";
+        private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=Memew001";
         public List <DataWisata> WisataList = new List<DataWisata>();
+        public List <IdFasilitas> idFasilitas1 = new List<IdFasilitas>();
 
         public bool ReadData()
         {
@@ -26,17 +27,19 @@ namespace Fitur_Homepage_admin_penginapan.Models
                 while (reader.Read())
                 {
                     DataWisata newData = new DataWisata();
+                    IdFasilitas idFasilitas = new IdFasilitas();
 
                     newData.id_wisata = (string)reader["id_wisata"];
                     newData.nama_wisata = (string)reader["nama_wisata"];
                     newData.deskripsi_wisata = (string)reader["deskripsi_wisata"];
                     newData.alamat_wisata = (string)reader["alamat_wisata"];
                     newData.harga_tiket = (decimal)reader["harga_tiket"];
-                    newData.id_fasilitas = (int)reader["fasilitas_wisata_id"];
                     newData.fasilitas = (string)reader["nama_fasilitas"];
                     newData.menu_paket = (string)reader["nama_paketmakanan"];
+                    idFasilitas.id_fasilitas = (int)reader["fasilitas_wisata_id"];
 
                     WisataList.Add(newData);
+                    idFasilitas1.Add(idFasilitas);
                 }
             }
 
@@ -50,7 +53,7 @@ namespace Fitur_Homepage_admin_penginapan.Models
             {
                 connection.Open();
 
-                NpgsqlCommand command = new NpgsqlCommand("UPDATE wisata t1 ", connection);
+                NpgsqlCommand command = new NpgsqlCommand("UPDATE wisata t ", connection);
 
                 command.Parameters.AddWithValue("", wisata.id_wisata);
                 command.Parameters.AddWithValue("", wisata.nama_wisata);
