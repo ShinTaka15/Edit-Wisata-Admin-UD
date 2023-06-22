@@ -1,3 +1,4 @@
+using Fitur_Homepage_admin_penginapan.Models;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Fitur_Homepage_admin_penginapan
@@ -6,9 +7,12 @@ namespace Fitur_Homepage_admin_penginapan
     {
         Edit_detail_wisata form = new Edit_detail_wisata();
 
+        Models.WisataContext WisataContext;
+
         public Wisata()
         {
             InitializeComponent();
+            WisataContext = new Models.WisataContext();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -36,11 +40,6 @@ namespace Fitur_Homepage_admin_penginapan
 
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
 
@@ -48,12 +47,16 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void label2_Click(object sender, EventArgs e)
         {
-            
+            form.Show();
+            form.LoadData("A01");
+            //form.ShowPicture("A01");
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            
+            form.Show();
+            form.LoadData("A02");
+            //form.ShowPicture("A02");
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -84,5 +87,10 @@ namespace Fitur_Homepage_admin_penginapan
             //form.ShowPicture("A02");
         }
 
+        private void LoadData()
+        {
+            WisataContext.ReadData();
+
+        }
     }
 }

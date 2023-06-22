@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Fitur_Homepage_admin_penginapan.Models;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,18 @@ namespace Fitur_Homepage_admin_penginapan
 {
     public partial class Edit_detail_wisata : Form
     {
-        private string connectionString = "host=localhost;port=5432;database=Wisata Admin;user id=postgres;password=shofiyah774";
+        private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=12345";
         private string Id;
+        private string IdFasilitas;
+        Models.WisataContext WisataContext;
         //private string imagelocation;
-
 
         public Edit_detail_wisata()
         {
             InitializeComponent();
+            WisataContext = new Models.WisataContext();
+
+            WisataContext.ReadData();
         }
 
         private void Edit_detail_wisata_Load(object sender, EventArgs e)
@@ -127,7 +132,7 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Simpan_Click(object sender, EventArgs e)
         {
-            UpdateData($"{Id}");
+            GetDataWisata();
         }
 
         private void UpdateData(string Id)
@@ -294,6 +299,33 @@ namespace Fitur_Homepage_admin_penginapan
             //    imagelocation = dialog.FileName.ToString();
             //    pictureBox1.ImageLocation = imagelocation;
             //}
+        }
+
+        public Models.DataWisata GetDataWisata()
+        {
+            Models.DataWisata newData = new Models.DataWisata();
+            newData.id_wisata = Id;
+            newData.nama_wisata = Judul.Text;
+            newData.deskripsi_wisata = Keterangan.Text;
+            newData.alamat_wisata= Lokasi.Text;
+            newData.harga_tiket = decimal.Parse(Hargatiket.Text);
+            newData.id_fasilitas = int.Parse(IdFasilitas);
+            newData.fasilitas = Fasilitas.Text;
+            newData.menu_paket = Menupaket.Text;
+
+            return newData;
+        }
+
+        public void SetDataWisata(DataWisata wisata)
+        {
+            Id = wisata.id_wisata;
+            Judul.Text = wisata.nama_wisata;
+            Keterangan.Text = wisata .deskripsi_wisata;
+            Lokasi.Text = wisata.alamat_wisata;
+            Hargatiket.Text = wisata.harga_tiket.ToString();
+            IdFasilitas = wisata.id_fasilitas.ToString();
+            Fasilitas.Text = wisata.fasilitas;
+            Menupaket.Text = wisata.menu_paket;
         }
     }
 }

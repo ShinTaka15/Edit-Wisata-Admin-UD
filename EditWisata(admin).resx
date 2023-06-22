@@ -120,7 +120,7 @@
         ncVTe0pqpzI39w9M+kCwm4ZyGQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="panel8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="panel7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtcAAABkCAYAAABNTxyvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAA/7JJREFUeF5M/Xe0ZttZ3gvu2uHLOeecc845fzvn2rUr53Cq6tTJOkfS0ZF0FEEI
@@ -3622,7 +3622,7 @@
         iLNqAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="panel7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="panel6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtcAAABkCAYAAABNTxyvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAA/7JJREFUeF5M/WWQXde6pomaxUpm5pW0kpmZmZmZScpUpiDFkGJmZku2JNuSZVuy
