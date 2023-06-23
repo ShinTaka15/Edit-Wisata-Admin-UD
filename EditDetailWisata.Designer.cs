@@ -386,6 +386,7 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(55, 163, 165);
             panel3.Controls.Add(EditPenginapan1);
             panel3.Location = new Point(198, 0);

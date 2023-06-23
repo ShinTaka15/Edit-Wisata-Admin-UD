@@ -149,7 +149,7 @@ namespace Fitur_Homepage_admin_penginapan
             }
             if (int.TryParse(Hargatiket.Text, out int harga))
             {
-                MessageBox.Show("Harap mengisi kolom harga yang tersedia");
+                MessageBox.Show("Harap mengisi kolom harga yang tersedia", "Pemberitahuan");
                 return;
             }
             DataWisata wisata = new DataWisata();
@@ -195,7 +195,7 @@ namespace Fitur_Homepage_admin_penginapan
             newData.id_wisata = Id;
             newData.nama_wisata = Judul.Text;
             newData.deskripsi_wisata = Keterangan.Text;
-            newData.alamat_wisata= Lokasi.Text;
+            newData.alamat_wisata = Lokasi.Text;
             newData.harga_tiket = decimal.Parse(Hargatiket.Text);
             newData.fasilitas = Fasilitas.Text;
             newData.menu_paket = Menupaket.Text;
@@ -217,7 +217,7 @@ namespace Fitur_Homepage_admin_penginapan
         {
             Id = wisata.id_wisata;
             Judul.Text = wisata.nama_wisata;
-            Keterangan.Text = wisata .deskripsi_wisata;
+            Keterangan.Text = wisata.deskripsi_wisata;
             Lokasi.Text = wisata.alamat_wisata;
             Hargatiket.Text = wisata.harga_tiket.ToString();
             IdFasilitas = wisata.id_fasilitas;

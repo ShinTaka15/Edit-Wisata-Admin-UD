@@ -277,6 +277,7 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel5);
             flowLayoutPanel1.Controls.Add(panel6);
@@ -288,7 +289,7 @@
             // 
             // panel4
             // 
-            panel4.Anchor = AnchorStyles.None;
+            panel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = Color.Transparent;
             panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
             panel4.BackgroundImageLayout = ImageLayout.Stretch;
@@ -314,7 +315,7 @@
             // 
             // panel5
             // 
-            panel5.Anchor = AnchorStyles.None;
+            panel5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = Color.Transparent;
             panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
@@ -339,7 +340,7 @@
             // 
             // panel6
             // 
-            panel6.Anchor = AnchorStyles.None;
+            panel6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel6.BackColor = Color.Transparent;
             panel6.BackgroundImage = (Image)resources.GetObject("panel6.BackgroundImage");
             panel6.BackgroundImageLayout = ImageLayout.Stretch;
@@ -364,7 +365,7 @@
             // panel7
             // 
             panel7.AccessibleName = "panel7";
-            panel7.Anchor = AnchorStyles.None;
+            panel7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel7.BackColor = Color.Transparent;
             panel7.BackgroundImage = (Image)resources.GetObject("panel7.BackgroundImage");
             panel7.BackgroundImageLayout = ImageLayout.Stretch;

@@ -12,7 +12,6 @@ namespace Fitur_Homepage_admin_penginapan.Models
     {
         private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=Memew001";
         public List <DataWisata> WisataList = new List<DataWisata>();
-        //public List <IdFasilitas> idFasilitas1 = new List<IdFasilitas>();
 
         public bool ReadData()
         {
@@ -28,7 +27,6 @@ namespace Fitur_Homepage_admin_penginapan.Models
                 while (reader.Read())
                 {
                     DataWisata newData = new DataWisata();
-                    //IdFasilitas idFasilitas = new IdFasilitas();
 
                     newData.id_wisata = (string)reader["id_wisata"];
                     newData.nama_wisata = (string)reader["nama_wisata"];
