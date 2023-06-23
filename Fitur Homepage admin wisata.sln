@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitur Homepage admin penginapan", "Fitur Homepage admin penginapan.csproj", "{071E31ED-61FD-4191-8E5A-10B70165117C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fitur Homepage admin wisata", "Fitur Homepage admin wisata.csproj", "{071E31ED-61FD-4191-8E5A-10B70165117C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

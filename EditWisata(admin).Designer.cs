@@ -37,30 +37,32 @@
             pictureBox3 = new PictureBox();
             panel2 = new Panel();
             button5 = new Button();
-            panel8 = new Panel();
-            label5 = new Label();
-            panel7 = new Panel();
-            label4 = new Label();
-            panel5 = new Panel();
-            label3 = new Label();
-            panel4 = new Panel();
-            label2 = new Label();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            panel4 = new Panel();
+            label2 = new Label();
+            panel5 = new Panel();
+            label3 = new Label();
+            panel6 = new Panel();
+            label4 = new Label();
+            panel7 = new Panel();
+            label5 = new Label();
             panel3 = new Panel();
             label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
-            panel8.SuspendLayout();
-            panel7.SuspendLayout();
-            panel5.SuspendLayout();
-            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -165,19 +167,16 @@
             panel2.AutoScrollMinSize = new Size(787, 1538);
             panel2.BackColor = Color.White;
             panel2.Controls.Add(button5);
-            panel2.Controls.Add(panel8);
-            panel2.Controls.Add(panel7);
-            panel2.Controls.Add(panel5);
-            panel2.Controls.Add(panel4);
             panel2.Controls.Add(button3);
             panel2.Controls.Add(button2);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(flowLayoutPanel1);
             panel2.Location = new Point(198, 77);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(899, 653);
+            panel2.Size = new Size(898, 653);
             panel2.TabIndex = 1;
             // 
             // button5
@@ -192,7 +191,7 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(706, 840);
+            button5.Location = new Point(678, 1466);
             button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
             button5.Size = new Size(145, 60);
@@ -200,108 +199,6 @@
             button5.Text = "Hapus";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
-            // 
-            // panel8
-            // 
-            panel8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel8.BackColor = Color.Transparent;
-            panel8.BackgroundImage = (Image)resources.GetObject("panel8.BackgroundImage");
-            panel8.BackgroundImageLayout = ImageLayout.Stretch;
-            panel8.Controls.Add(label5);
-            panel8.Location = new Point(41, 680);
-            panel8.Margin = new Padding(3, 4, 3, 4);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(810, 133);
-            panel8.TabIndex = 17;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(7, 45);
-            label5.Name = "label5";
-            label5.Size = new Size(177, 29);
-            label5.TabIndex = 4;
-            label5.Text = "Kebon Agung";
-            label5.Click += label5_Click;
-            // 
-            // panel7
-            // 
-            panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel7.BackColor = Color.Transparent;
-            panel7.BackgroundImage = (Image)resources.GetObject("panel7.BackgroundImage");
-            panel7.BackgroundImageLayout = ImageLayout.Stretch;
-            panel7.Controls.Add(label4);
-            panel7.Location = new Point(41, 520);
-            panel7.Margin = new Padding(3, 4, 3, 4);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(810, 133);
-            panel7.TabIndex = 16;
-            panel7.Paint += panel7_Paint;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(7, 47);
-            label4.Name = "label4";
-            label4.Size = new Size(122, 29);
-            label4.TabIndex = 3;
-            label4.Text = "Patemon";
-            label4.Click += label4_Click;
-            // 
-            // panel5
-            // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel5.BackColor = Color.Transparent;
-            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
-            panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Controls.Add(label3);
-            panel5.Location = new Point(41, 360);
-            panel5.Margin = new Padding(3, 4, 3, 4);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(810, 133);
-            panel5.TabIndex = 15;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(7, 45);
-            label3.Name = "label3";
-            label3.Size = new Size(125, 29);
-            label3.TabIndex = 2;
-            label3.Text = "Watu Ulo";
-            label3.Click += label3_Click;
-            // 
-            // panel4
-            // 
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.Transparent;
-            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
-            panel4.BackgroundImageLayout = ImageLayout.Stretch;
-            panel4.Controls.Add(label2);
-            panel4.Location = new Point(41, 200);
-            panel4.Margin = new Padding(3, 4, 3, 4);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(810, 133);
-            panel4.TabIndex = 14;
-            panel4.Paint += panel4_Paint;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(7, 45);
-            label2.Name = "label2";
-            label2.Size = new Size(160, 29);
-            label2.TabIndex = 1;
-            label2.Text = "Rembangan";
-            label2.Click += label2_Click;
             // 
             // button3
             // 
@@ -328,7 +225,7 @@
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button2.Location = new Point(427, 89);
+            button2.Location = new Point(416, 89);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(139, 53);
@@ -345,7 +242,7 @@
             button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 163, 165);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Pixel);
-            button1.Location = new Point(769, 89);
+            button1.Location = new Point(747, 89);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(81, 53);
@@ -361,7 +258,7 @@
             pictureBox2.Location = new Point(21, 157);
             pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(837, 5);
+            pictureBox2.Size = new Size(815, 5);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
@@ -373,20 +270,131 @@
             pictureBox1.Location = new Point(21, 67);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(837, 5);
+            pictureBox1.Size = new Size(815, 5);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(panel5);
+            flowLayoutPanel1.Controls.Add(panel6);
+            flowLayoutPanel1.Controls.Add(panel7);
+            flowLayoutPanel1.Location = new Point(31, 200);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(811, 1259);
+            flowLayoutPanel1.TabIndex = 27;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.Transparent;
+            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
+            panel4.BackgroundImageLayout = ImageLayout.Stretch;
+            panel4.Controls.Add(label2);
+            panel4.Location = new Point(3, 4);
+            panel4.Margin = new Padding(3, 4, 3, 4);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(788, 133);
+            panel4.TabIndex = 14;
+            panel4.Paint += panel4_Paint;
+            // 
+            // label2
+            // 
+            label2.AccessibleName = "label2";
+            label2.AutoSize = true;
+            label2.Font = new Font("Poppins Black", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(8, 45);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 44);
+            label2.TabIndex = 2;
+            label2.Text = "Rembangan";
+            // 
+            // panel5
+            // 
+            panel5.Anchor = AnchorStyles.None;
+            panel5.BackColor = Color.Transparent;
+            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
+            panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Controls.Add(label3);
+            panel5.Location = new Point(3, 145);
+            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(789, 133);
+            panel5.TabIndex = 15;
+            // 
+            // label3
+            // 
+            label3.AccessibleName = "label3";
+            label3.AutoSize = true;
+            label3.Font = new Font("Poppins Black", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(8, 45);
+            label3.Name = "label3";
+            label3.Size = new Size(137, 44);
+            label3.TabIndex = 3;
+            label3.Text = "Watu Ulo";
+            // 
+            // panel6
+            // 
+            panel6.Anchor = AnchorStyles.None;
+            panel6.BackColor = Color.Transparent;
+            panel6.BackgroundImage = (Image)resources.GetObject("panel6.BackgroundImage");
+            panel6.BackgroundImageLayout = ImageLayout.Stretch;
+            panel6.Controls.Add(label4);
+            panel6.Location = new Point(3, 286);
+            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(789, 133);
+            panel6.TabIndex = 25;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Poppins Black", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(7, 47);
+            label4.Name = "label4";
+            label4.Size = new Size(138, 44);
+            label4.TabIndex = 3;
+            label4.Text = "Patemon";
+            // 
+            // panel7
+            // 
+            panel7.AccessibleName = "panel7";
+            panel7.Anchor = AnchorStyles.None;
+            panel7.BackColor = Color.Transparent;
+            panel7.BackgroundImage = (Image)resources.GetObject("panel7.BackgroundImage");
+            panel7.BackgroundImageLayout = ImageLayout.Stretch;
+            panel7.Controls.Add(label5);
+            panel7.Location = new Point(3, 427);
+            panel7.Margin = new Padding(3, 4, 3, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(788, 133);
+            panel7.TabIndex = 26;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Poppins Black", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(7, 45);
+            label5.Name = "label5";
+            label5.Size = new Size(194, 44);
+            label5.TabIndex = 4;
+            label5.Text = "Kebon Agung";
             // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(55, 163, 165);
             panel3.Controls.Add(label1);
-            panel3.Location = new Point(198, 0);
+            panel3.Location = new Point(196, 0);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(902, 77);
+            panel3.Size = new Size(900, 77);
             panel3.TabIndex = 0;
             // 
             // label1
@@ -395,7 +403,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Pixel);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(391, 17);
+            label1.Location = new Point(390, 17);
             label1.Name = "label1";
             label1.Size = new Size(137, 26);
             label1.TabIndex = 0;
@@ -416,16 +424,17 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel2.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
@@ -441,10 +450,8 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private Panel panel3;
-        private Panel panel7;
         private Panel panel5;
         private Panel panel4;
-        private Panel panel8;
         private Button button5;
         private Label label1;
         private PictureBox pictureBox3;
@@ -452,9 +459,12 @@
         private Button button9;
         private Button button8;
         private Button button7;
+        private Panel panel7;
         private Label label5;
+        private Panel panel6;
         private Label label4;
         private Label label3;
         private Label label2;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
