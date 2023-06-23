@@ -60,24 +60,26 @@ namespace Fitur_Homepage_admin_penginapan.Models
             Edit_detail_wisata edit_Detail_Wisata = new Edit_detail_wisata();
             List<DataWisata> namaFasilitas = new List<DataWisata>();
             namaFasilitas.Add(edit_Detail_Wisata.GetDataFasilitas());
-            List<DataWisata> idFasilitas = new List<DataWisata>();
 
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 connection.Open();
 
-                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE wisata t1 JOIN tiket t2 SET t1.nama_wisata = @Nama, t1.deskripsi_wisata = @Deskripsi, t1.alamat_wisata = @Alamat, t2.harga_tiket = @Harga WHERE t1.id_wisata = @Id ", connection))
+                using (NpgsqlCommand command = new NpgsqlCommand("UPDATE wisata t1 JOIN tiket t2 SET t1.nama_wisata = @Nama, t1.deskripsi_wisata = @Deskripsi, t1.alamat_wisata = @Alamat, t1.foto_wisata = @Foto, t2.harga_tiket = @Harga WHERE t1.id_wisata = @Id", connection))
                 {
                     command.Parameters.AddWithValue("@Id", wisata.id_wisata);
                     command.Parameters.AddWithValue("@Nama", wisata.nama_wisata);
                     command.Parameters.AddWithValue("@Deskripsi", wisata.deskripsi_wisata);
                     command.Parameters.AddWithValue("@Alamat", wisata.alamat_wisata);
+                    command.Parameters.AddWithValue("@Foto", wisata.Image);
                     command.Parameters.AddWithValue("@Harga", wisata.harga_tiket);
+
+                    command.ExecuteNonQuery();
                 }
 
                 foreach (var nama in namaFasilitas)
                 {
-                    using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT fasilitas_wisata_id FROM fasilitas_wisata ilike '@Fasilitas'", connection))
+                    using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT fasilitas_wisata_id FROM fasilitas_wisata ilike @Fasilitas", connection))
                     {
                         command1.Parameters.AddWithValue("@Fasilitas", nama);
                         NpgsqlDataReader reader = command1.ExecuteReader();
@@ -85,7 +87,7 @@ namespace Fitur_Homepage_admin_penginapan.Models
                         {
                             DataWisata Id = new DataWisata();
                             Id.id_fasilitas = (int)reader["fasilitas_wisata_id"];
-                            idFasilitas.Add(Id);
+                            namaFasilitas.Add(Id);
                         }
                         reader.Close();
                     }
@@ -94,14 +96,26 @@ namespace Fitur_Homepage_admin_penginapan.Models
                 using (NpgsqlCommand command2 = new NpgsqlCommand("DELETE FROM detail_wisata WHERE wisata_id_wisata = @Id", connection))
                 {
                     command2.Parameters.AddWithValue("@Id", wisata.id_wisata);
+
+                    command2.ExecuteNonQuery();
                 }
 
                 using (NpgsqlCommand command3 = new NpgsqlCommand("INSERT INTO detail_wisata(wisata_id_wisata, fasilitas_wisata_fasilitas_wisata_id) VALUES (@Id,@IdFasilitas)", connection))
                 {
                     command3.Parameters.AddWithValue("@Id", wisata.id_wisata);
-                    command3.Parameters.AddWithValue("@IdFasilitas");
+                    command3.Parameters.AddWithValue("@IdFasilitas", wisata.id_fasilitas);
+
+                    command3.ExecuteNonQuery();
+                }
+
+                using (NpgsqlCommand command4 = new NpgsqlCommand("UPDATE FROM paket_makanan SET nama_paketmakanan = @Menupaket", connection))
+                {
+                    command4.Parameters.AddWithValue("@Menupaket", wisata.menu_paket);
+
+                    command4.ExecuteNonQuery();
                 }
             }
+
             return isSucces;
         }
 
@@ -112,25 +126,23 @@ namespace Fitur_Homepage_admin_penginapan.Models
             {
                 connection.Open();
 
-                NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = @Id", connection);
                 command.Parameters.AddWithValue("@Id", wisata.id_wisata);
                 int jumlahData = command.ExecuteNonQuery();
 
-                NpgsqlCommand command1 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                NpgsqlCommand command1 = new NpgsqlCommand($"DELETE FROM detail_wisata WHERE id_wisata = @Id", connection);
                 command1.Parameters.AddWithValue("@Id", wisata.id_wisata);
                 int jumlahData1 = command1.ExecuteNonQuery();
 
-                NpgsqlCommand command2 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                NpgsqlCommand command2 = new NpgsqlCommand($"DELETE FROM tiket WHERE id_wisata = @Id", connection);
                 command2.Parameters.AddWithValue("@Id", wisata.id_wisata);
                 int jumlahData2 = command2.ExecuteNonQuery();
 
-                NpgsqlCommand command3 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                NpgsqlCommand command3 = new NpgsqlCommand($"DELETE FROM paket_makanan WHERE id_wisata = @Id", connection);
                 command3.Parameters.AddWithValue("@Id", wisata.id_wisata);
                 int jumlahData3 = command3.ExecuteNonQuery();
 
-
-                int dataTerhapus = jumlahData + jumlahData1 + jumlahData2 + jumlahData3;
-                if (dataTerhapus > 0)
+                if ( jumlahData > 0 && jumlahData1 > 0 && jumlahData2 > 0 && jumlahData3 > 0)
                 {
                     isSucces = true;
                     var itemToRemove = WisataList.Single(rec => rec.id_wisata == wisata.id_wisata);
