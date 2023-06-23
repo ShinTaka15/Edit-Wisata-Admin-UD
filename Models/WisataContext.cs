@@ -39,15 +39,8 @@ namespace Fitur_Homepage_admin_penginapan.Models
                     newData.menu_paket = (string)reader["nama_paketmakanan"];
 
                     WisataList.Add(newData);
-                    //idFasilitas1.Add(idFasilitas);
-
-                    byte[] imageBytes = (byte[])reader["foto_wisata"];
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
-                    {
-                        Image image = Image.FromStream(ms);
-                        newData.Image = image;
-                    }
                 }
+                reader.Close();
             }
 
             return isSucces;
