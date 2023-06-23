@@ -13,12 +13,9 @@ namespace Fitur_Homepage_admin_penginapan.Models
         public string deskripsi_wisata { get; set; }
         public string alamat_wisata { get; set;}
         public decimal harga_tiket { get; set; }
+        public int id_fasilitas { get; set; }
         public string fasilitas { get; set; }
         public string menu_paket { get; set; }
-    }
-
-    public class IdFasilitas
-    {
-        public int id_fasilitas { get; set; }
+        public Image Image { get; set; }
     }
 }

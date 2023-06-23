@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,17 +17,16 @@ namespace Fitur_Homepage_admin_penginapan
     public partial class Edit_detail_wisata : Form
     {
         private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=Memew001";
+        Models.WisataContext WisataContext;
         private string Id;
         private int IdFasilitas;
-        Models.WisataContext WisataContext;
-        //private string imagelocation;
+        private string imagelocation;
+        byte[] imageData;
 
         public Edit_detail_wisata()
         {
             InitializeComponent();
-            //WisataContext = new Models.WisataContext();
-
-            //WisataContext.ReadData();
+            WisataContext = new Models.WisataContext();
         }
 
         private void Edit_detail_wisata_Load(object sender, EventArgs e)
@@ -257,48 +257,27 @@ namespace Fitur_Homepage_admin_penginapan
             }
         }
 
-        //public void ShowPicture(string Id)
-        //{
-        //    try
-        //    {
-        //        using (NpgsqlConnection connection = new NpgsqlConnection (connectionString))
-        //        {
-        //            connection.Open();
-        //            NpgsqlCommand command = new NpgsqlCommand($"SELECT image FROM wisata WHERE id_wisata = {Id}", connection);
-        //            DataTable dt = new DataTable();
-        //            dt.Load(command.ExecuteReader());
-        //            connection.Close();
+        public void SelectPicture()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "File Gambar|*.jpg;*.png;*.gif";
 
-        //            if (dt.Rows.Count > 0 && dt.Rows[0]["image"] != DBNull.Value)
-        //            {
-        //                byte[] imageData = (byte[])dt.Rows[0]["image"];
-        //                using (MemoryStream ms = new MemoryStream(imageData))
-        //                {
-        //                    pictureBox1.Image = System.Drawing.Image.FromStream(ms);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                pictureBox1.Image = null;
-        //                LoadData($"{Id}");
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error: " + ex.Message);
-        //    }
-        //}
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imagelocation = openFileDialog.FileName;
+                pictureBox1.Image = Image.FromFile(imagelocation);
+
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    pictureBox1.Image.Save(memoryStream, ImageFormat.Jpeg);
+                    imageData = memoryStream.ToArray();
+                }
+            }
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog dialog = new OpenFileDialog();
-            //dialog.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)|*.*";
-            //if (dialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    imagelocation = dialog.FileName.ToString();
-            //    pictureBox1.ImageLocation = imagelocation;
-            //}
+            SelectPicture();
         }
 
         public Models.DataWisata GetDataWisata()
@@ -309,18 +288,19 @@ namespace Fitur_Homepage_admin_penginapan
             newData.deskripsi_wisata = Keterangan.Text;
             newData.alamat_wisata= Lokasi.Text;
             newData.harga_tiket = decimal.Parse(Hargatiket.Text);
-            newData.fasilitas = Fasilitas.Text;
+            //newData.fasilitas = Fasilitas.Text;
             newData.menu_paket = Menupaket.Text;
 
             return newData;
         }
 
-        public Models.IdFasilitas GetIdFasilitas()
+        public Models.DataWisata GetDataFasilitas()
         {
-            Models.IdFasilitas idFasilitas = new Models.IdFasilitas();
-            idFasilitas.id_fasilitas = IdFasilitas;
+            Models.DataWisata dataFasilitas = new Models.DataWisata();
+            dataFasilitas.id_fasilitas = IdFasilitas;
+            dataFasilitas.fasilitas = Fasilitas.Text;
 
-            return idFasilitas;
+            return dataFasilitas;
         }
 
         public void SetDataWisata(DataWisata wisata)
@@ -330,6 +310,7 @@ namespace Fitur_Homepage_admin_penginapan
             Keterangan.Text = wisata .deskripsi_wisata;
             Lokasi.Text = wisata.alamat_wisata;
             Hargatiket.Text = wisata.harga_tiket.ToString();
+            IdFasilitas = wisata.id_fasilitas;
             Fasilitas.Text = wisata.fasilitas;
             Menupaket.Text = wisata.menu_paket;
         }

@@ -23,11 +23,12 @@ namespace Fitur_Homepage_admin_penginapan.Models
             labelNamaWisata.Location = new Point(7, 47);
             labelNamaWisata.Name = "id_wisata";
             labelNamaWisata.Size = new Size(138, 44);
+            //labelNamaWisata.ForeColor = Color.White;
             labelNamaWisata.Text = dataWisata.nama_wisata;
 
             //panelWisata.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelWisata.BackColor = Color.Transparent;
-            panelWisata.BackgroundImage = (Image)resources.GetObject("panelWisata.BackgroundImage");
+            panelWisata.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
             panelWisata.BackgroundImageLayout = ImageLayout.Stretch;
             panelWisata.Controls.Add(labelNamaWisata);
             panelWisata.Location = new Point(41, 200);
