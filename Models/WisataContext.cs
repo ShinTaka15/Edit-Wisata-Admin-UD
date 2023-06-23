@@ -38,6 +38,13 @@ namespace Fitur_Homepage_admin_penginapan.Models
                     newData.fasilitas = (string)reader["nama_fasilitas"];
                     newData.menu_paket = (string)reader["nama_paketmakanan"];
 
+                    byte[] imageBytes = (byte[])reader["foto_wisata"];
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        Image image = Image.FromStream(ms);
+                        newData.Image = image;
+                    }
+
                     WisataList.Add(newData);
                 }
                 reader.Close();
