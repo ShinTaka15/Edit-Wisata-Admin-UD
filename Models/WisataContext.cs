@@ -98,5 +98,13 @@ namespace Fitur_Homepage_admin_penginapan.Models
             }
             return isSucces;
         }
+
+        public bool DeleteData(DataWisata wisata)
+        {
+            bool isSucces = false;
+
+
+            return isSucces;
+        }
     }
 }
