@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,9 +80,14 @@ namespace Fitur_Homepage_admin_penginapan.Models
                     using (NpgsqlCommand command1 = new NpgsqlCommand("SELECT fasilitas_wisata_id FROM fasilitas_wisata ilike '@Fasilitas'", connection))
                     {
                         command1.Parameters.AddWithValue("@Fasilitas", nama);
-
                         NpgsqlDataReader reader = command1.ExecuteReader();
-
+                        while (reader.Read())
+                        {
+                            DataWisata Id = new DataWisata();
+                            Id.id_fasilitas = (int)reader["fasilitas_wisata_id"];
+                            idFasilitas.Add(Id);
+                        }
+                        reader.Close();
                     }
                 }
 
@@ -92,7 +98,7 @@ namespace Fitur_Homepage_admin_penginapan.Models
 
                 using (NpgsqlCommand command3 = new NpgsqlCommand("INSERT INTO detail_wisata(wisata_id_wisata, fasilitas_wisata_fasilitas_wisata_id) VALUES (@Id,@IdFasilitas)", connection))
                 {
-                    command3.Parameters.AddWithValue("Id", wisata.id_wisata);
+                    command3.Parameters.AddWithValue("@Id", wisata.id_wisata);
                     command3.Parameters.AddWithValue("@IdFasilitas");
                 }
             }
