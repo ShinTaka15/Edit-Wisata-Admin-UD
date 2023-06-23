@@ -102,7 +102,35 @@ namespace Fitur_Homepage_admin_penginapan.Models
         public bool DeleteData(DataWisata wisata)
         {
             bool isSucces = false;
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
 
+                NpgsqlCommand command = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                command.Parameters.AddWithValue("@Id", wisata.id_wisata);
+                int jumlahData = command.ExecuteNonQuery();
+
+                NpgsqlCommand command1 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                command1.Parameters.AddWithValue("@Id", wisata.id_wisata);
+                int jumlahData1 = command1.ExecuteNonQuery();
+
+                NpgsqlCommand command2 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                command2.Parameters.AddWithValue("@Id", wisata.id_wisata);
+                int jumlahData2 = command2.ExecuteNonQuery();
+
+                NpgsqlCommand command3 = new NpgsqlCommand($"DELETE FROM wisata WHERE id_wisata = '@Id'", connection);
+                command3.Parameters.AddWithValue("@Id", wisata.id_wisata);
+                int jumlahData3 = command3.ExecuteNonQuery();
+
+
+                int dataTerhapus = jumlahData + jumlahData1 + jumlahData2 + jumlahData3;
+                if (dataTerhapus > 0)
+                {
+                    isSucces = true;
+                    var itemToRemove = WisataList.Single(rec => rec.id_wisata == wisata.id_wisata);
+                    WisataList.Remove(itemToRemove);
+                }
+            }
 
             return isSucces;
         }
