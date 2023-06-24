@@ -5,8 +5,6 @@ namespace Fitur_Homepage_admin_penginapan
 {
     public partial class Wisata : Form
     {
-        Edit_detail_wisata form = new Edit_detail_wisata();
-
         Models.WisataContext WisataContext;
 
         public Wisata()
@@ -90,11 +88,11 @@ namespace Fitur_Homepage_admin_penginapan
         private void LoadItem()
         {
             WisataContext.ReadData();
-            List<DataWisata> WisataList;
-            WisataList = WisataContext.WisataList;
+            List<DataWisata> datas;
+            datas = WisataContext.WisataList;
 
             flowLayoutPanel1.Controls.Clear();
-            foreach (var wisata in WisataList)
+            foreach (var wisata in datas)
             {
                 string namaWisata = wisata.nama_wisata;
                 Panel panelWisata = new WisataItem(wisata).CreateItem();

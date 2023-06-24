@@ -16,6 +16,6 @@ namespace Fitur_Homepage_admin_penginapan.Models
         public int id_fasilitas { get; set; }
         public string fasilitas { get; set; }
         public string menu_paket { get; set; }
-        public Image Image { get; set; }
+        public byte[] Image { get; set; }
     }
 }

@@ -16,9 +16,7 @@ namespace Fitur_Homepage_admin_penginapan
 {
     public partial class Edit_detail_wisata : Form
     {
-        private string connectionString = "host=localhost;port=5432;database=JT-Apps;username=postgres;password=Memew001";
         Models.WisataContext WisataContext;
-        DataWisata dataWisata;
         private string Id;
         private int IdFasilitas;
         private string imagelocation;
@@ -133,31 +131,49 @@ namespace Fitur_Homepage_admin_penginapan
 
         private void Simpan_Click(object sender, EventArgs e)
         {
-            //GetDataWisata();
-            //string id_wisata = dataWisata.id_wisata;
+            string id_wisata = "A01";
+            //int id_fasilitas
             string nama_wisata = Judul.Text;
             string deskripsi_wisata = Keterangan.Text;
-            int harga_tiket;
+            string alamat_wisata = Lokasi.Text;
+            decimal harga_tiket = decimal.Parse(Hargatiket.Text);
             string fasilitas = Fasilitas.Text;
             string menu_paket = Menupaket.Text;
-            string alamat_wisata = Lokasi.Text;
+            byte[] Image = imageData;
+            //GetDataWisata();
+            //string id_wisata = dataWisata.id_wisata;
 
             if (string.IsNullOrEmpty(Judul.Text) || string.IsNullOrEmpty(Keterangan.Text) || string.IsNullOrEmpty(Fasilitas.Text) || string.IsNullOrEmpty(Menupaket.Text) || string.IsNullOrEmpty(Lokasi.Text))
             {
                 MessageBox.Show("Ada kolom yang kosong. Harap masukkan nilai yang di inginkan.", "Pemberitahuan");
                 return;
             }
-            if (int.TryParse(Hargatiket.Text, out int harga))
+            if (!long.TryParse(Hargatiket.Text, out long harga))
             {
                 MessageBox.Show("Harap mengisi kolom harga yang tersedia", "Pemberitahuan");
                 return;
             }
-            DataWisata wisata = new DataWisata();
+            DataWisata wisata = new DataWisata()
+            {
+                id_wisata = id_wisata,
+                nama_wisata = nama_wisata,
+                deskripsi_wisata = deskripsi_wisata,
+                alamat_wisata = alamat_wisata,
+                harga_tiket = harga_tiket,
+                fasilitas = fasilitas,
+                menu_paket = menu_paket,
+                Image = Image,
+            };
             WisataContext.UpdateData(wisata);
         }
 
         private void Hapus_Click(object sender, EventArgs e)
         {
+            string id_wisata = "A01";
+            DataWisata dataWisata = new DataWisata
+            {
+                id_wisata = id_wisata
+            };
             DialogResult dr = MessageBox.Show("Apa anda yakin ingin menghapus?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
@@ -169,7 +185,7 @@ namespace Fitur_Homepage_admin_penginapan
         public void SelectPicture()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "File Gambar|*.jpg;*.png;*.gif";
+            openFileDialog.Filter = "File Gambar|*.jpg;*.png;*.gif;*.jpeg";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -192,26 +208,26 @@ namespace Fitur_Homepage_admin_penginapan
         public Models.DataWisata GetDataWisata()
         {
             Models.DataWisata newData = new Models.DataWisata();
-            newData.id_wisata = Id;
+            //newData.id_wisata = Id;
             newData.nama_wisata = Judul.Text;
             newData.deskripsi_wisata = Keterangan.Text;
             newData.alamat_wisata = Lokasi.Text;
-            newData.harga_tiket = decimal.Parse(Hargatiket.Text);
+            newData.harga_tiket = int.Parse(Hargatiket.Text);
             newData.fasilitas = Fasilitas.Text;
             newData.menu_paket = Menupaket.Text;
-            newData.Image = pictureBox1.Image;
+            //newData.Image = pictureBox1.Image;
 
             return newData;
         }
 
-        public Models.DataWisata GetDataFasilitas()
-        {
-            Models.DataWisata dataFasilitas = new Models.DataWisata();
-            dataFasilitas.id_fasilitas = IdFasilitas;
-            dataFasilitas.fasilitas = Fasilitas.Text;
+        //public Models.DataWisata GetDataFasilitas()
+        //{
+        //    Models.DataWisata dataFasilitas = new Models.DataWisata();
+        //    dataFasilitas.id_fasilitas = IdFasilitas;
+        //    dataFasilitas.fasilitas = Fasilitas.Text;
 
-            return dataFasilitas;
-        }
+        //    return dataFasilitas;
+        //}
 
         public void SetDataWisata(DataWisata wisata)
         {
@@ -223,7 +239,7 @@ namespace Fitur_Homepage_admin_penginapan
             IdFasilitas = wisata.id_fasilitas;
             Fasilitas.Text = wisata.fasilitas;
             Menupaket.Text = wisata.menu_paket;
-            pictureBox1.Image = wisata.Image;
+            //pictureBox1 = wisata.Image;
         }
     }
 }
